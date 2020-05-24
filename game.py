@@ -3,13 +3,18 @@ import pygame
 
 #main function
 def main():
-
+    
+    #Initialize game
     pygame.init()
-    #logo = pygame.image.load("logo32x32.png")
-    #pyame.display.set_icon(logo)
     pygame.display.set_caption("hey it me")
+    screen = pygame.display.set_mode((480,360))
+    red = (255, 64, 64)
+    screen.fill((red))
 
-    screen = pygame.display.set_mode((240,180))
+    #Loading image
+    ball = pygame.image.load("images/ball.gif")
+    ballrect = ball.get_rect()
+
     running = True
 
     #game's main while loop
@@ -18,7 +23,8 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        pygame.display.flip
+        screen.blit(ball,(0,0))
+        pygame.display.flip()
 
 if __name__=="__main__":
     main()
