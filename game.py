@@ -1,28 +1,27 @@
 import sys
 import pygame
 
+from settings import Settings
+
 class StealthGame:
     """Overall Class"""
 
     def __init__(self):
         """Initialize game"""
         pygame.init()
-        pygame.display.set_caption("hey it me")
-        screen = pygame.display.set_mode((480,360))
-
-    #Loading image
-    #ball = pygame.image.load("images/ball.gif")
-    #ballrect = ball.get_rect()
+        self.settings = Settings()
+        self.screen = pygame.display.set_mode(
+                (self.settings.screen_width, self.settings.screen_height))
 
     def run_game(self):
         """Main loop"""
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                   sys.exit() 
+                    sys.exit() 
 
-        #screen.blit(ball,(0,0))
-        pygame.display.flip()
+            self.screen.fill(self.settings.bg_color)
+            pygame.display.flip()
 
 if __name__ == "__main__":
    sg = StealthGame()
