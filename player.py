@@ -11,8 +11,15 @@ class Player:
         # Load image and rect
         self.image = pygame.image.load("images/alien.bmp")
         self.rect = self.image.get_rect()
-
         self.rect.midbottom = self.screen_rect.midbottom
+
+        # Movement flag
+        self.moving_right = False
+
+    def update(self):
+        """Update ship position based on movement flag."""
+        if self.moving_right:
+            self.rect.x +=1
 
     def blitme(self):
         """Draw image at current location."""
