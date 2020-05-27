@@ -2,6 +2,7 @@ import sys
 import pygame
 
 from settings import Settings
+from player import Player
 
 class StealthGame:
     """Overall Class"""
@@ -10,8 +11,10 @@ class StealthGame:
         """Initialize game"""
         pygame.init()
         self.settings = Settings()
+        #self.player = Player(self)
         self.screen = pygame.display.set_mode(
                 (self.settings.screen_width, self.settings.screen_height))
+        self.player = Player(self)
 
     def run_game(self):
         """Main loop"""
@@ -21,6 +24,7 @@ class StealthGame:
                     sys.exit() 
 
             self.screen.fill(self.settings.bg_color)
+            self.player.blitme()
             pygame.display.flip()
 
 if __name__ == "__main__":
