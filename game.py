@@ -19,20 +19,27 @@ class StealthGame:
     def run_game(self):
         """Main loop"""
         while True:
-            self._check_events(self)
-            self._update_screen(self)
-            pygame.display.flip()
+            self._check_events()
+            self.player.update()
+            self._update_screen()
 
     def _check_events(self):
         """respond to keypresses"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    self.player.moving_right = True
+            elif event.type == pygame.KEYUP:
+                if event.key == pygame.K_RIGHT:
+                    self.player.moving_right = False
 
     def _update_screen(self):
         """Update images on screen, flip to new screen"""
         self.screen.fill(self.settings.bg_color)
         self.player.blitme()
+        pygame.display.flip()
 
 if __name__ == "__main__":
    sg = StealthGame()
