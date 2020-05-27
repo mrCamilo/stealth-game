@@ -19,10 +19,8 @@ class StealthGame:
     def run_game(self):
         """Main loop"""
         while True:
-            self._check_events()
-
-            self.screen.fill(self.settings.bg_color)
-            self.player.blitme()
+            self._check_events(self)
+            self._update_screen(self)
             pygame.display.flip()
 
     def _check_events(self):
@@ -30,6 +28,11 @@ class StealthGame:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+
+    def _update_screen(self):
+        """Update images on screen, flip to new screen"""
+        self.screen.fill(self.settings.bg_color)
+        self.player.blitme()
 
 if __name__ == "__main__":
    sg = StealthGame()
