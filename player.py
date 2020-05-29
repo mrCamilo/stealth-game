@@ -15,11 +15,20 @@ class Player:
 
         # Movement flag
         self.moving_right = False
+        self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
 
     def update(self):
         """Update ship position based on movement flag."""
         if self.moving_right:
             self.rect.x +=1
+        if self.moving_left:
+            self.rect.x -=1
+        if self.moving_up:
+            self.rect.y -=1
+        if self.moving_down:
+            self.rect.y +=1
 
     def blitme(self):
         """Draw image at current location."""
